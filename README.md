@@ -15,4 +15,5 @@ For the development of software used programming language Java. Development envi
 ## User Manual
 To start the application, you must start the server. This launch can be carried out by simply launching the executable file of the program. Also for successful work requires access to the Internet.
 After starting the server, the user can send requests to this software product. After executing the **/start** command, a menu will appear in front of the user, indicating the various commands that this bot can execute.
+<br>
 ![Image alt](https://github.com/gulidamarta/telegramBot/blob/master/TelegramBotApi/start.png)
