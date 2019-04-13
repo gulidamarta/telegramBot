@@ -27,18 +27,15 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     static String a = "";
-
     public void sendMsg(Message message, String text){
         SendMessage sendMessage = new SendMessage();
-        // включение возможности разметки
         sendMessage.enableMarkdown(true);
-        // установка id-чата, чтобы было понятно кому отвечать(в какой конкретно чат необходимо
-        // отправить ответ)
+        // Setting the id-chat so that it is clear to whom to answer (in what particular chat is necessary
+        // send response)
         sendMessage.setChatId(message.getChatId().toString());
-        // на какое конкретно сообщение нужно ответить
         sendMessage.setReplyToMessageId(message.getMessageId());
         sendMessage.setText(text);
-        // отправка сообщения
+        //sending message
         try{
             setButtons(sendMessage);
             execute(sendMessage);
@@ -157,24 +154,22 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     public void setButtons(SendMessage sendMessage){
-        // инициализация клавиатуры
+        // keyboard initialization
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
 
-        // устанавливаем разметку для нашей клавиатуры(связываем наше сообщение с нашей клавиатурой)
+        // set the markup for our keyboard (link our message with our keyboard)
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
 
-        // параметры, которая будет выводить клавиатура определенным пользователям либо всем пользователям
+        // parameters that will display the keyboard to specific users or all users
         replyKeyboardMarkup.setSelective(true);
-
-        // указываем подгонку клиенту под количество кнопок
         replyKeyboardMarkup.setResizeKeyboard(true);
 
-        // параметр, указывающий скрывать нам клавиатуру после нажатия кнопки или не скрывать
+        // the parameter that indicates to hide the keyboard after pressing a button or not to hide
         replyKeyboardMarkup.setOneTimeKeyboard(false);
 
-        // создаем кнопки
+        // creat buttons
         List<KeyboardRow> keyboardRowList = new ArrayList();
-        // инициализируем первую строку клавиатуры
+        // initialize first line of the keyboard
         KeyboardRow keyboardFirstRow = new KeyboardRow();
         keyboardFirstRow.add(new KeyboardButton("/help"));
         keyboardFirstRow.add(new KeyboardButton("/settings"));
@@ -192,7 +187,7 @@ public class Bot extends TelegramLongPollingBot {
         keyboardThirdRow.add(new KeyboardButton("/currency"));
 
         keyboardRowList.add(keyboardThirdRow);
-        // устанавливаем список на клавиатуре
+        // set list on the keyboard
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
 
@@ -202,6 +197,7 @@ public class Bot extends TelegramLongPollingBot {
 
     public String getBotToken()
     {
-        return "735038538:AAGXF13CLGkWZ13nNO-oPr9nMC0iesFIj5Q";
+        // here you should type your unique token given by telegram father
+        return "your_unique_token";
     }
 }
